@@ -6,7 +6,6 @@ import jsonify
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
-
 @app.route('/')
 def main():
     return render_template('sample.html')

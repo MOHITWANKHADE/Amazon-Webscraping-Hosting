@@ -9,6 +9,7 @@ import requests
 import json
 import time
 import numpy as np
+import sys
 
 from selenium.webdriver.support.select import Select
 
@@ -114,26 +115,24 @@ def write_to_file(extractor, product_count):
     products = {}
     prices = []
     with open("search_results_urls.txt",'r') as urllist, open('search_results_output.json','w') as outfile:
-        count_products = 0
         individual_products = 1
         for ind, url in enumerate(urllist.read().splitlines()):
             data = scrape(url, extractor)
-            ind += 1
             if data:
-                count_products += len(data['products'])
-                for ind_j, product in enumerate(data['products']):
+                for product in data['products']:
                     product['search_url'] = url
 
-                        
-                    if individual_products <= product_count and product['price'] is not None:
-                        prices.append(int(float(product['price'].encode('ascii', 'ignore').decode('utf-8').replace(',',''))))
+                    if individual_products <= product_count:
+                        if product['price'] is not None:
+                            prices.append(int(float(product['price'].encode('ascii', 'ignore').decode('utf-8').replace(',',''))))
+                        else:
+                            prices.append(int(sys.maxsize))
                         print("Saving Product: %s"%product['title'].encode('utf8'))
                         json.dump(product,outfile)
                         outfile.write("\n")
-                        products[ind * ind_j] = product
+                        products[individual_products - 1] = product
                         # sleep(5)
                     else:
-                        print("We are done taking {} number of products".format(individual_products))
                         min_index_of_product = np.argmin(np.array(prices))
                         return products, products[min_index_of_product]
                     individual_products += 1
@@ -182,9 +181,7 @@ def from_server(input_word, input_sorting, input_price_low, input_price_high, pi
     if product_count > 50:
         print("Max was 50, we are taking max 50")
         product_count = 50
-    else:
-        # By default it is 10
-        product_count = 10
+
     if "Featured" in input_sorting:
         input_sorting = "relevanceblender"
     elif "Low to High" in input_sorting:
