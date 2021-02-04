@@ -1,0 +1,21 @@
+<html>
+	<body>
+		<form action = "http://localhost:5000/result" method = "POST">
+			<p>Input Word <input type = "text" name = "input_word"/></p>
+			<p>Input Sorting <select name="input_sorting" id="input_sorting">
+				<option value="Featured">Featured</option>
+				<option value="LowToHigh">Low to High</option>
+				<option value="HighToLow">High to Low</option>
+				<option value="CustomReview">Customer Review</option>
+				<option value="Newest">Newest</option>
+				<option value="RelevanceBlender">Relevenace Blender (default)</option>
+			</select>
+			</p>
+			<p>Input Price (Low) <input type = "number" name = "input_price_low"/></p>
+			<p>Input Price (High) <input type = "number" name = "input_price_high"/></p>
+			<p>Pincode <input type = "number" name = "pincode"/></p>
+			<p>Product Count <input type = "number" name = "product_count"/></p>
+			<p><input type = "submit" value = "submit"/></p>
+		</form>
+	</body>
+</html>

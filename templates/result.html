@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+      integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+      crossorigin="anonymous"
+    />
+<script>
+var jsonfile = {{jsonfile}};
+</script>
+</head>
+<body>
+	<h1> Results Acquired </h1>
+	<h2> Whole Output (for given number of items) </h2>
+	<table border = 1>
+		{% for key, value in data1.items() %}
+		<tr>
+			<th> {{ key }} </th>
+			<td> {{ value }} </td>
+		</tr>
+		{% endfor %}
+	</table>
+	
+	<h2> Item with minimum price (for given number of items) </h2>
+	<table border = 1>
+		{% for key, value in data2.items() %}
+		<tr>
+			<th> {{ key }} </th>
+			<td> {{ value }} </td>
+		</tr>
+		{% endfor %}
+	</table>
+
+	<h2> NOTE </h2>
+	<p> This code has been submitted by Mohit Wankhade (mohitwankhade.nmims@gmail.com) </p>
+	<p> For references, check: https://github.com/MOHITWANKHADE/Go-comet-Assignment/ </p>
+
+</body>
+</html>
