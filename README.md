@@ -1,12 +1,6 @@
 # Amazon Webscraping
 
 
-## Report
-
-Please find the report here: https://github.com/MOHITWANKHADE/Go-comet-Assignment/blob/main/Report.pdf
-
-The phase timelines have been provided there as well.
-
 ## Code Guidelines
 
 In order to run the non-GUI version, please do: python3 main.py on your system. Make sure that you have required libraries installed.
